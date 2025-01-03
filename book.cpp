@@ -6,13 +6,13 @@ Book::Book(std::string mytitle, std::string myauthor, std::string myisbn)
     this->author = myauthor;
     this->isbn = myisbn;
 }
-void Book::setTitle(std::string titleToSet){
+void Book::setTitle(const std::string& titleToSet){
     this->title = titleToSet;
 }
-void Book::setAuthor(std::string authorToSet){
+void Book::setAuthor(const std::string& authorToSet){
     this->author = authorToSet;
 }
-void Book::setIsbn(std::string isbnToSet){
+void Book::setIsbn(const std::string& isbnToSet){
     this->isbn = isbnToSet;
 }
 
