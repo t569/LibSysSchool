@@ -10,12 +10,16 @@
 //         ■ calculateTotalLateFees()– Compute total overdue fees for the patron.
 #ifndef PATRON_RECORD_H
 #define PATRON_RECORD_H
+#define CURR_DATE 30
 #include <vector>
+#include <iostream>     // this might bre redundant and a bad choice lol
 #include "book_item.h"
 class PatronRecord {
 private:
     std::vector<BookItem> checkedOutBooks;
 public:
+    int current_date = CURR_DATE;       // to be set or implemented
+
     // Function to add a book to the patron's record
     void addBook(const BookItem& book);
     // Function to remove a book from the patron's record by ISBN
@@ -27,6 +31,6 @@ public:
     // Function to Check if the patron has overdue books.
     bool hasOverdueBooks()const;
     // Function to Compute total overdue fees for the patron.
-    double calculateTotalLateFees()const;
+    double calculateTotalLateFees();
 };
 #endif // PATRON_RECORD_H
