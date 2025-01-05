@@ -1,13 +1,10 @@
 #include "library_item.h"
 
- LibraryItem::LibraryItem(const std::string& title, bool& isCheckedOut , const int& dueDate)
- {
-    this->title = title;
-    this->isCheckedOut = isCheckedOut;
-    this->dueDate = dueDate;
- }
-
+LibraryItem::LibraryItem(const std::string& title, bool& isCheckedOut ,
+ const int& dueDate):title(title), isCheckedOut(isCheckedOut),dueDate(dueDate){};
     //Getters ans Setters
+ 
+//Getters ans Setters
 std::string LibraryItem::getTitle()const{
     return this->title;
 }
@@ -20,6 +17,9 @@ void LibraryItem::setTitle(const std::string& newTitle){
     this->title = newTitle;
 }
 
+int LibraryItem::getDueDate(void) const{
+    return this->dueDate;
+}
 
 // Real functions
     

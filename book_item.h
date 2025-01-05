@@ -10,30 +10,31 @@
 #ifndef BOOK_ITEM_H
 #define BOOK_ITEM_H
 #include "library_item.h"
+#include <iostream>
 class BookItem : public LibraryItem {
 private:
     std::string author;
     std::string isbn;
+    bool isAvailable = true;
+    double chargePerDay = 12.00;
 public:
     // Constructor
-    BookItem(const std::string& title, bool isCheckedOut, const std::string& dueDate, const std::string& author, const std::string& isbn);
+    BookItem(const std::string& title, bool& isCheckedOut,
+     const int& dueDate, const std::string& author, const std::string& isbn);
+
     // Getters and Setters
-    std::string getAuthor()const{
-        return author;
-    }
-    void setAuthor(const std::string& newAuthor){
-        author=newAuthor;
-    }
-    std::string getIsbn()const{
-        return isbn;
-    }
-    void setIsbn(const std::string& newIsbn){
-        isbn=newIsbn;
-    }
-    
+    std::string getAuthor()const;
+    void setAuthor(const std::string& newAuthor);
+    std::string getIsbn()const;
+    void setIsbn(const std::string& newIsbn);
+    bool getAvailable() const;
+    void setAvailable(bool& new_status);
+    double getLateCharge() const;
+    void setLateCharge(double&);
+
     // Function to Display details of the book
     void printDetails()const; 
     // Function to Calculate fine based on overdue days
-    double calculateLateFees(int daysOverdue)const; 
+    double calculateLateFees(int daysOverdue); 
 };
 #endif // BOOK_ITEM_H

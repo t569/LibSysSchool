@@ -25,6 +25,7 @@ public:
     //Getters ans Setters
     std::string getTitle()const;
     bool getIsCheckedOut()const;
+    int getDueDate(void) const;
     void setTitle(const std::string& newTitle);
 
 
