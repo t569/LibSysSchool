@@ -1,9 +1,10 @@
 #include "patron.h"
 
-Patron::Patron(std::string name, int libraryCardNumber)
+Patron::Patron(const std::string& name, const std::string& libraryCardNumber, const std::string& contactInfo)
 {
     this->name = name;
     this->libraryCardNumber = libraryCardNumber;
+    this->contactInfo = contactInfo;
 }
 
 void Patron::updateContactInfo(const std::string& newContactInfo)
@@ -11,7 +12,7 @@ void Patron::updateContactInfo(const std::string& newContactInfo)
     this->name = newContactInfo;
 }
 
-bool Patron::canBorrowMoreBooks(int currentBorrowedCount, int maxLimit)
+bool Patron::canBorrowMoreBooks(int currentBorrowedCount, int maxLimit) const
 {
     if (currentBorrowedCount > maxLimit)
     {
@@ -25,15 +26,15 @@ void Patron::setName(const std::string& nameToSet)
     this->name = nameToSet;
 }
 
-void Patron::setLibCardNumber(int cardNoToSet)
+void Patron::setLibraryCardNumber(const std::string& newLibraryCardNumber)
 {
-    this->libraryCardNumber = cardNoToSet;
+    this->libraryCardNumber = newLibraryCardNumber;
 }
 
-std::string Patron::getName(void){
+std::string Patron::getName(void) const{
     return this->name;
 }
 
-int Patron::getLibCardNUmber(void){
+std::string Patron::getLibraryCardNumber(void) const{
     return this->libraryCardNumber;
 }
