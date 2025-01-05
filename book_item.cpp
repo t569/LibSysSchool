@@ -31,7 +31,7 @@ void BookItem::setAvailable(bool& new_status){
     this->isAvailable = new_status;
 }
 
-double BookItem::getLateCharge() const{
+double BookItem::getLateCharge() {
     return this->chargePerDay;
 }
 

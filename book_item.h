@@ -29,7 +29,7 @@ public:
     void setIsbn(const std::string& newIsbn);
     bool getAvailable() const;
     void setAvailable(bool& new_status);
-    double getLateCharge() const;
+    double getLateCharge();
     void setLateCharge(double&);
 
     // Function to Display details of the book
