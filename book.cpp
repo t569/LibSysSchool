@@ -1,10 +1,10 @@
 #include "book.h"
 
-Book::Book(std::string mytitle, std::string myauthor, std::string myisbn)
+Book::Book(const std::string& title, const std::string& author, const std::string& isbn)
 {
-    this->title = mytitle;
-    this->author = myauthor;
-    this->isbn = myisbn;
+    this->title = title;
+    this->author = author;
+    this->isbn = isbn;
 }
 void Book::setTitle(const std::string& titleToSet){
     this->title = titleToSet;
@@ -16,12 +16,12 @@ void Book::setIsbn(const std::string& isbnToSet){
     this->isbn = isbnToSet;
 }
 
-std::string Book::getTitle(void){
+std::string Book::getTitle(void) const{
     return this->title;
 }
-std::string Book::getAuthor(void){
+std::string Book::getAuthor(void) const{
     return this->author;
 }
-std::string Book::getIsbn(void){
+std::string Book::getIsbn(void) const{
     return this->isbn;
 }

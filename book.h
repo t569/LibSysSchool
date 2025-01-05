@@ -19,22 +19,12 @@ public:
     // this->author = author;
     // this->isbn = isbn;
     // Getters and Setters
-    std::string getTitle()const{
-        return title;
-    }
-    void setTitle(const std::string& newTitle){
-        title=newTitle;
-    }
-    std::string getAuthor()const{
-        return author;
-    }
-    void setAuthor(const std::string& newAuthor){
-        author=newAuthor;
-    }std::string getIsbn()const{
-        return isbn;
-    }
-    void setIsbn(const std::string& newIsbn){
-        isbn=newIsbn;
-    }
+    void Book::setTitle(const std::string& titleToSet);
+    void Book::setAuthor(const std::string& authorToSet);
+    void Book::setIsbn(const std::string& isbnToSet);
+
+    std::string Book::getTitle(void) const;
+    std::string Book::getAuthor(void) const;
+    std::string Book::getIsbn(void) const;
 };
 #endif // BOOK_H
