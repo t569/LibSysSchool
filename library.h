@@ -31,7 +31,6 @@ private:
     std::vector<BookItem> books;               
     std::vector<Patron> patrons;               
     std::vector<PatronRecord> patronRecords;  
-
 public:
     // Functions for managing books and patrons, borrowing and returning books
     //Function that  Adds a book to the library
@@ -43,13 +42,15 @@ public:
     // Function that Return a borrowed book
     bool returnBook(const std::string& isbn, const std::string& patronCardNumber); 
     
+
     // Search functionality
     // Search books by title
-    std::vector<BookItem> searchBooksByTitle(const std::string& title) const; 
+    BookItem* searchBooksByTitle(const std::string& title); 
     // Search books by author     
-    std::vector<BookItem> searchBooksByAuthor(const std::string& author) const;    
+    BookItem* searchBooksByAuthor(const std::string& author);    
     // Find a patron by name
     Patron* searchPatronByName(const std::string& name);                          
+
 
     // Overdue Management
     // List all overdue books

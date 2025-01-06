@@ -14,9 +14,13 @@
 #include <vector>
 #include <iostream>     // this might bre redundant and a bad choice lol
 #include "book_item.h"
+#include "patron.h"
 class PatronRecord {
 private:
     std::vector<BookItem> checkedOutBooks;
+    Patron unique_patron;       // patron being referred to
+
+    
 public:
     int current_date = CURR_DATE;       // to be set or implemented
 
@@ -32,5 +36,7 @@ public:
     bool hasOverdueBooks()const;
     // Function to Compute total overdue fees for the patron.
     double calculateTotalLateFees();
+
+    std::vector<BookItem> getCheckedOutBooks() const;
 };
 #endif // PATRON_RECORD_H

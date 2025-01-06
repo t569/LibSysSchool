@@ -67,3 +67,8 @@ double PatronRecord::calculateTotalLateFees()
     }
     return fees;
 }
+
+std::vector<BookItem> PatronRecord::getCheckedOutBooks() const
+{
+    return this->checkedOutBooks;
+}
