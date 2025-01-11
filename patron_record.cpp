@@ -43,8 +43,8 @@ int PatronRecord::getBorrowedBookCount()const
 
 
 // Helper Function Parse time
-std::time_t PatronRecord::parseTime(const std::string& timetoparse)
-const {
+std::time_t parseTime(const std::string& timetoparse)
+{
     std::tm dueTimeInfo = {};
     std::istringstream ss(timetoparse);
     ss >> std::get_time(&dueTimeInfo, "%Y-%m-%d");

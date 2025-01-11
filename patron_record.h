@@ -15,6 +15,10 @@
 #include <iostream>     // this might bre redundant and a bad choice lol
 #include "book_item.h"
 #include "patron.h"
+
+// Helper function
+std::time_t parseTime(const std::string& timetoparse);
+
 class PatronRecord {
 private:
     std::vector<BookItem> checkedOutBooks;
@@ -36,10 +40,6 @@ public:
     bool hasOverdueBooks()const;
     // Function to Compute total overdue fees for the patron.
     double calculateTotalLateFees();
-
-
-    // Helper function
-    std::time_t parseTime(const std::string& timetoparse) const;
 
     std::vector<BookItem> getCheckedOutBooks() const;
 };

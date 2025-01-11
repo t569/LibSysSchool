@@ -54,13 +54,14 @@ Patron* Library::searchPatronByName(const std::string& name)
 
 void Library::listOverdueBooks() const
 {
+    std::time_t now = std::time(nullptr);
     for(auto& record: this->patronRecords)
     {
         std::vector<BookItem> myrecord = record.getCheckedOutBooks();
         for(auto& book : myrecord)
         {
             // the book is overdue;
-            if(record.current_date > book.getDueDate())
+            if(now > parseTime(book.getDueDate()))
             {
                 book.printDetails();    // output the details
             }    
