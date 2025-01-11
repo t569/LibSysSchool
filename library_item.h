@@ -35,7 +35,7 @@ public:
 
 
     bool checkOut(const std::string& dueDate);
-    void returnItem();
+    bool returnItem();
     // Function to Extend the due date for an item.
     bool renewItem(int extraDays);
     // Function to Mark an item as lost and update its status.

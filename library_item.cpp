@@ -44,14 +44,36 @@ bool LibraryItem::checkOut(const std::string& dueDate){
 
 }
 
-void LibraryItem::returnItem(){
-    this->isCheckedOut = false;
-    this->dueDate = " ";
+bool LibraryItem::returnItem(){
+    if (isCheckedOut) {
+        this -> isCheckedOut = false;
+        dueDate = "";
+        return true;
+    }
+    return false;
 }
 
 // Function to Extend the due date for an item.
 bool LibraryItem::renewItem(int extraDays){
-    this->dueDate += extraDays;
+    if (!this->isCheckedOut || this->islost) {
+        return false;
+    }
+
+    // Parse current due date
+    std::tm timeinfo = {};
+    std::stringstream ss(dueDate);
+    ss >> std::get_time(&timeinfo, "%Y-%m-%d");
+    
+    // Add extra days
+    std::time_t dueTime = std::mktime(&timeinfo);
+    dueTime += (extraDays * 24 * 60 * 60);// days , hours,miutes, seconds 
+    
+    // Format new due date
+    std::tm* newDueTime = std::localtime(&dueTime);
+    std::stringstream newDueSS;
+    newDueSS << std::put_time(newDueTime, "%Y-%m-%d");
+    this->dueDate = newDueSS.str();
+    
     return true;
 }
     
