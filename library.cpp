@@ -95,11 +95,15 @@ bool Library::isBookAvailable(const std::string& isbn) const
     return false;   // if it defaults
 } 
 
-
+void Library::generateLibraryReport() const
+{
+    for(auto& book : this->books)
+    {
+        book.printDetails();    // print the details of all library books
+    }
+}
 
 /*
-void generateLibraryReport() const;    
- 
 void reserveBook(const std::string& isbn, const std::string& patronCardNumber);      
 void viewTransactionHistory(const std::string& patronCardNumber) const; 
 */

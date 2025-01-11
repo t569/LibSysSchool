@@ -5,6 +5,8 @@ BookItem::BookItem(const std::string& title, bool& isCheckedOut,
     : LibraryItem(title, isCheckedOut,dueDate), author(author), isbn(isbn)
     { }     // ORMOR E CHORKE!
 
+// Find a way to incorporate book.h 
+
 // Getters and Setters
 std::string BookItem::getAuthor()const{
         return this->author;
