@@ -40,29 +40,45 @@ int PatronRecord::getBorrowedBookCount()const
         std::cout<<book.getIsCheckedOut()<<std::endl;
     }
 }
-    
+
+
+// Helper Function Parse time
+std::time_t PatronRecord::parseTime(const std::string& timetoparse)
+const {
+    std::tm dueTimeInfo = {};
+    std::istringstream ss(timetoparse);
+    ss >> std::get_time(&dueTimeInfo, "%Y-%m-%d");
+
+    std::time_t dueTime = std::mktime(&dueTimeInfo);
+
+    return dueTime;
+
+}
 // Function to Check if the patron has overdue books.
 bool PatronRecord::hasOverdueBooks()const
 {
-  for(auto& book : this->checkedOutBooks)
-    {
-        if(this->current_date > book.getDueDate())
+    std::time_t now = std::time(nullptr);    
+    for(auto& book : this->checkedOutBooks)
         {
-            return true;
+            if(now > parseTime(book.getDueDate()))
+            {
+                return true;
+            }
         }
-    }
-    return false;  
+        return false;  
 }
     
 // Function to Compute total overdue fees for the patron.
 double PatronRecord::calculateTotalLateFees()
 {
     double fees = 0;
+    std::time_t now = std::time(nullptr); 
     for(auto& book: this->checkedOutBooks)
     {
-        if(this->current_date > book.getDueDate())
+        std::time_t duedate = parseTime(book.getDueDate());
+        if(now > duedate)
         {
-            fees += book.calculateLateFees(current_date - book.getDueDate());
+            fees += book.calculateLateFees(static_cast<int>(now - duedate)/ (24 * 60 * 60));
         }
     }
     return fees;
