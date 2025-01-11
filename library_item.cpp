@@ -23,9 +23,24 @@ std::string LibraryItem::getDueDate(void) const{
 
 // Real functions
     
-void LibraryItem::checkOut(const std::string& dueDate){
-    this->isCheckedOut = true;
-    this->dueDate = dueDate;
+bool LibraryItem::checkOut(const std::string& dueDate){
+     if (!this->isCheckedOut) {
+       this-> isCheckedOut = true;
+        
+        // Calculate due date (14 days in hours from now)
+        std::time_t now = std::time(nullptr);
+        std::time_t dueTime = now + (14 * 24 * 60 * 60 ); // 14 days in seconds
+        // Convert to local time structure
+        std::tm* dueTimeInfo = std::localtime(&dueTime); 
+        
+        // Format the date as YYYY-MM-DD using string stream
+        std::stringstream ss;
+        ss << std::put_time(dueTimeInfo, "%Y-%m-%d");// date format year / month / day
+        this->dueDate = ss.str();
+        
+        return true; // Checkout successful
+    }
+    return false;  // Checkout failed (already checked out)
 
 }
 

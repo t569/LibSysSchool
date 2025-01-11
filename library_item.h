@@ -13,6 +13,9 @@
 #ifndef LIBRARY_ITEM_H
 #define LIBRARY_ITEM_H
 #include <string>
+#include <iomanip>
+#include <sstream>
+#include <ctime>
 class LibraryItem {
 private:
     std::string title;
@@ -31,7 +34,7 @@ public:
 
 
 
-    void checkOut(const std::string& dueDate);
+    bool checkOut(const std::string& dueDate);
     void returnItem();
     // Function to Extend the due date for an item.
     bool renewItem(int extraDays);
