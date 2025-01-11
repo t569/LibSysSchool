@@ -89,4 +89,8 @@ std::vector<BookItem> PatronRecord::getCheckedOutBooks() const
     return this->checkedOutBooks;
 }
 
+Patron PatronRecord::getPatron() const
+{
+    return this->unique_patron;
+}
 int a = 4;

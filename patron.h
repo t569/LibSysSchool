@@ -16,6 +16,9 @@ private:
     std::string name;
     std::string libraryCardNumber;
     std::string contactInfo;
+
+    // notifications message
+    std::string messages;
 public:
     //Constuctor
     Patron(const std::string& name, const std::string& libraryCardNumber, const std::string& contactInfo);
@@ -26,7 +29,10 @@ public:
     bool Patron::canBorrowMoreBooks(int currentBorrowedCount, int maxLimit) const;
     void Patron::setName(const std::string& nameToSet);
     void Patron::setLibraryCardNumber(const std::string& newLibraryCardNumber);
+    void Patron::setmessage(const std::string& message);
     std::string Patron::getName(void) const;
     std::string Patron::getLibraryCardNumber(void) const;
+    std::string Patron::getmessage(void);
+
 };
 #endif //PATRON_H

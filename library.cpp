@@ -75,18 +75,10 @@ void Library::notifyPatronsWithOverdueBooks() const
     {
         if(record.hasOverdueBooks())
         {
-            // send a message to the patron
+            record.getPatron().setmessage("You have overdue books!");   // might change later
         }
     }
 }
-
-
-/*
-void generateLibraryReport() const;    
- 
-void reserveBook(const std::string& isbn, const std::string& patronCardNumber);      
-void viewTransactionHistory(const std::string& patronCardNumber) const; 
-*/
 
 bool Library::isBookAvailable(const std::string& isbn) const
 {
@@ -102,3 +94,12 @@ bool Library::isBookAvailable(const std::string& isbn) const
     }
     return false;   // if it defaults
 } 
+
+
+
+/*
+void generateLibraryReport() const;    
+ 
+void reserveBook(const std::string& isbn, const std::string& patronCardNumber);      
+void viewTransactionHistory(const std::string& patronCardNumber) const; 
+*/

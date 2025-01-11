@@ -41,6 +41,8 @@ public:
     // Function to Compute total overdue fees for the patron.
     double calculateTotalLateFees();
 
+    Patron PatronRecord::getPatron() const;
+
     std::vector<BookItem> getCheckedOutBooks() const;
 };
 #endif // PATRON_RECORD_H

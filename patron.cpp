@@ -38,3 +38,14 @@ std::string Patron::getName(void) const{
 std::string Patron::getLibraryCardNumber(void) const{
     return this->libraryCardNumber;
 }
+
+std::string Patron::getmessage()
+{
+    return this->messages;
+}
+
+void Patron::setmessage(const std::string& message)
+{
+    // append the message on 
+    this->messages += message;
+}
