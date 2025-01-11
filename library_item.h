@@ -17,24 +17,24 @@ class LibraryItem {
 private:
     std::string title;
     bool isCheckedOut;
-    int dueDate;
+    std::string dueDate;
     bool islost = false;
 
 public:
-    LibraryItem(const std::string& title, bool& isCheckedOut , const int& dueDate);
+    LibraryItem(const std::string& title, bool& isCheckedOut , const std::string& dueDate);
     //Getters ans Setters
     std::string getTitle()const;
     bool getIsCheckedOut()const;
-    int getDueDate(void) const;
+    std::string getDueDate(void) const;
     void setTitle(const std::string& newTitle);
 
 
 
 
-    void checkOut(const int& dueDate);
+    void checkOut(const std::string& dueDate);
     void returnItem();
     // Function to Extend the due date for an item.
-    int renewItem(int extraDays);
+    bool renewItem(int extraDays);
     // Function to Mark an item as lost and update its status.
     void markAsLost();
  };

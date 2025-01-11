@@ -1,7 +1,7 @@
 #include "library_item.h"
 
 LibraryItem::LibraryItem(const std::string& title, bool& isCheckedOut ,
- const int& dueDate):title(title), isCheckedOut(isCheckedOut),dueDate(dueDate){};
+ const std::string& dueDate):title(title), isCheckedOut(isCheckedOut),dueDate(dueDate){};
     //Getters ans Setters
  
 //Getters ans Setters
@@ -17,13 +17,13 @@ void LibraryItem::setTitle(const std::string& newTitle){
     this->title = newTitle;
 }
 
-int LibraryItem::getDueDate(void) const{
+std::string LibraryItem::getDueDate(void) const{
     return this->dueDate;
 }
 
 // Real functions
     
-void LibraryItem::checkOut(const int& dueDate){
+void LibraryItem::checkOut(const std::string& dueDate){
     this->isCheckedOut = true;
     this->dueDate = dueDate;
 
@@ -31,13 +31,13 @@ void LibraryItem::checkOut(const int& dueDate){
 
 void LibraryItem::returnItem(){
     this->isCheckedOut = false;
-    this->dueDate = 0;
+    this->dueDate = " ";
 }
 
 // Function to Extend the due date for an item.
-int LibraryItem::renewItem(int extraDays){
+bool LibraryItem::renewItem(int extraDays){
     this->dueDate += extraDays;
-    return this->dueDate;
+    return true;
 }
     
 // Function to Mark an item as lost and update its status.
