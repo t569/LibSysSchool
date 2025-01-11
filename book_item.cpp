@@ -1,7 +1,7 @@
 #include "book_item.h"
 
 BookItem::BookItem(const std::string& title, bool& isCheckedOut,
-     const int& dueDate, const std::string& author, const std::string& isbn)
+     const std::string& dueDate, const std::string& author, const std::string& isbn)
     : LibraryItem(title, isCheckedOut,dueDate), author(author), isbn(isbn)
     { }     // ORMOR E CHORKE!
 
