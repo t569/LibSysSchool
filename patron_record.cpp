@@ -72,3 +72,5 @@ std::vector<BookItem> PatronRecord::getCheckedOutBooks() const
 {
     return this->checkedOutBooks;
 }
+
+int a = 4;
