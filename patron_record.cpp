@@ -35,10 +35,15 @@ void PatronRecord::listCheckedOutBooks()const
 // Function to Count the number of books a patron has checked out.
 int PatronRecord::getBorrowedBookCount()const
 {
+    int book_count = 0;
     for(auto& book : this->checkedOutBooks)
     {
-        std::cout<<book.getIsCheckedOut()<<std::endl;
+        if(book.getIsCheckedOut())
+        {
+            book_count++;
+        }
     }
+    return book_count;
 }
 
 

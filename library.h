@@ -31,6 +31,7 @@ private:
     std::vector<BookItem> books;               
     std::vector<Patron> patrons;               
     std::vector<PatronRecord> patronRecords;  
+    std::vector<std::string> LibraryRecords;
 public:
     // Functions for managing books and patrons, borrowing and returning books
     //Function that  Adds a book to the library
@@ -70,6 +71,7 @@ public:
 
     // Transaction History
     // To View the borrowing and returning history of a patron
-    void viewTransactionHistory(const std::string& patronCardNumber) const; 
+    void viewTransactionHistory(const std::string& patronCardNumber) const;
+
 };
 #endif // LIBRARY_H

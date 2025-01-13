@@ -19,7 +19,7 @@ private:
     double chargePerDay = 12.00;
 public:
     // Constructor
-    BookItem(const std::string& title, bool& isCheckedOut,
+    BookItem(const std::string& title, bool isCheckedOut,
      const std::string& dueDate, const std::string& author, const std::string& isbn);
 
     // Getters and Setters

@@ -25,14 +25,14 @@ public:
 
 
     //Getters ans Setters
-    void Patron::updateContactInfo(const std::string& newContactInfo);
-    bool Patron::canBorrowMoreBooks(int currentBorrowedCount, int maxLimit) const;
-    void Patron::setName(const std::string& nameToSet);
-    void Patron::setLibraryCardNumber(const std::string& newLibraryCardNumber);
-    void Patron::setmessage(const std::string& message);
-    std::string Patron::getName(void) const;
-    std::string Patron::getLibraryCardNumber(void) const;
-    std::string Patron::getmessage(void);
+    void updateContactInfo(const std::string& newContactInfo);
+    bool canBorrowMoreBooks(int currentBorrowedCount, int maxLimit) const;
+    void setName(const std::string& nameToSet);
+    void setLibraryCardNumber(const std::string& newLibraryCardNumber);
+    void setmessage(const std::string& message);
+    std::string getName(void) const;
+    std::string getLibraryCardNumber(void) const;
+    std::string getmessage(void);
 
 };
 #endif //PATRON_H
