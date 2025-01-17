@@ -12,10 +12,23 @@ struct ClassicRecord
 // Function to add a book to the patron's record
  void PatronRecord::addBook(const BookItem& book)
  {
-   this->checkedOutBooks.emplace_back(book);
+   // the code is written in such a way that being less than 0 is practically impossible (argue with your keyboard)
+   if(!(book.getAvailable()) && book.getReservedCount() == 0)       // not available and non to reserve anymore  
+   {
+        for(auto& refbook: this->reservedBooks)    
+        {
+            if(refbook.getIsbn() == book.getIsbn())     // arbitrary choice lol; book was reserved for us, horray!
+            {
+              this->checkedOutBooks.emplace_back(book);  
+            }
+        }
+   } 
+   else if(book.getAvailable())     // book is normally available
+   {
+        this->checkedOutBooks.emplace_back(book);
+   }
 
-
-   // change date later
+   // change date later: SEEMS pretty slick sha
    ClassicRecord record_to_add = {__DATE__,this->getPatron().getName(), book.getTitle(), borrow};
    this->patronTransactions.emplace_back(record_to_add);
  }
@@ -112,11 +125,15 @@ std::vector<BookItem> PatronRecord::getCheckedOutBooks() const
     return this->checkedOutBooks;
 }
 
+std::vector<BookItem>& PatronRecord::getReservedBooks()
+{
+    return this->reservedBooks;
+}
+
 Patron PatronRecord::getPatron() const
 {
     return this->unique_patron;
 }
-int a = 4;
 
 std::vector<ClassicRecord> PatronRecord::getPatronTransactions() const
 {
