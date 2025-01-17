@@ -32,7 +32,7 @@ public:
     bool getAvailable() const;
     void setAvailable(bool& new_status);
     unsigned int getReservedCount() const;
-    void setReservedCount(int change=-1);      // reduces the reserve_count variable by 1everytime it is called
+    void setReservedCount(int);      // reduces the reserve_count variable by 1everytime it is called
     double getLateCharge();
     void setLateCharge(double&);
 

@@ -26,6 +26,7 @@
 #include "patron.h"
 #include "patron_record.h"
 
+void loopAndDump(PatronRecord& record);
 class Library {
 private:
     std::vector<BookItem> books;               
@@ -39,7 +40,7 @@ public:
     //Function that  Adds a book to the library
     void addBook(const BookItem& book);  
     // Function that Adds a patron to the library           
-    void addPatron(const Patron& patron);       
+    void addPatron(const Patron& patron, const PatronRecord& record);       
     // Function that Borrow a book for a patron   
     bool borrowBook(const std::string& isbn, const std::string& patronCardNumber);  
     // Function that Return a borrowed book
@@ -52,7 +53,8 @@ public:
     // Search books by author     
     BookItem* searchBooksByAuthor(const std::string& author);    
     // Find a patron by name
-    Patron* searchPatronByName(const std::string& name);                          
+    Patron* searchPatronByName(const std::string& name);
+    PatronRecord* getRecordForPatron(Patron* patron);                          
 
 
     // Overdue Management
@@ -73,7 +75,9 @@ public:
 
     // Transaction History
     // To View the borrowing and returning history of a patron
-    void viewTransactionHistory(const std::string& patronCardNumber) const;
+    void viewTransactionHistory(const std::string& patronCardNumber);
+
+    // HELPER FUNCTION
 
 };
 #endif // LIBRARY_H

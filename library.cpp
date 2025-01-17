@@ -8,9 +8,11 @@ void Library::addBook(const BookItem& book)
 }  
 
 // Function that Adds a patron to the library           
-void Library::addPatron(const Patron& patron)
+void Library::addPatron(const Patron& patron, const PatronRecord& record)
 {
-    this->patrons.emplace_back(patron);   
+    this->patrons.emplace_back(patron);  
+    // also add a patron record
+    this->patronRecords.emplace_back(record);
 }   
 
 BookItem* Library::searchBooksByTitle(const std::string& title) 
@@ -109,19 +111,39 @@ void viewTransactionHistory(const std::string& patronCardNumber) const;
 */
 
 
-void Library::viewTransactionHistory(const std::string& patronCardNumber) const 
+void Library::viewTransactionHistory(const std::string& patronCardNumber)
 {
-    for(auto& record : patronRecords)
+    for(auto& record: this->patronRecords)
     {
         if(record.getPatron().getLibraryCardNumber() == patronCardNumber)
-            for(auto& history_entry: record.getPatronTransactions())
-            {
-                record.displayClassicRecord(history_entry); // display the record for a particular patron
-            }
+        {
+            loopAndDump(record);
+        }
+        else{
+            std::cout<<"oooooo"<<std::endl;
+        }
     }
-    // if nothing was found return null
-    return;
+
 }
+
+PatronRecord* Library::getRecordForPatron(Patron* patron)
+{
+    if(!patron) return nullptr;
+    for(size_t i = 0; i < patrons.size(); i++)
+        if(patron == &patrons[i]) return &patronRecords[i];
+    return nullptr;
+}
+
+void loopAndDump(PatronRecord& record)
+{
+    auto transactions = record.getPatronTransactions();
+    for(auto& stuff: transactions)
+    {
+        record.displayClassicRecord(stuff);
+    }
+}
+
+
 
 // add a book to a patron's reserve record
 void Library::reserveBook(const std::string& isbn, const std::string& patronCardNumber)
@@ -155,7 +177,7 @@ void Library::reserveBook(const std::string& isbn, const std::string& patronCard
         }
 
         // decrement the count
-        (*refbook).setReservedCount();  // reduces the count by 1
+        (*refbook).setReservedCount(-1);  // reduces the count by 1
     }
 
     // then make it only accessible to said patron

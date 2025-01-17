@@ -62,7 +62,7 @@ unsigned int BookItem::getReservedCount() const
     return this->reserved_count;
 }
 
-void BookItem::setReservedCount(int change=-1){
+void BookItem::setReservedCount(int change){
     if(change == -1)
         this->reserved_count--;
     else

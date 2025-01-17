@@ -1,13 +1,6 @@
 #include "patron_record.h"
 
-
-struct ClassicRecord
-{
-    std::string date;                        // date the action was taken 
-    std::string patronName;                  // name of the patron
-    std::string bookName;                    // name of the book
-    Action myaction;
-};
+PatronRecord::PatronRecord(Patron* patron): unique_patron((*patron)) {}
 
 // Function to add a book to the patron's record
  void PatronRecord::addBook(const BookItem& book)

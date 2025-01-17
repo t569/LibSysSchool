@@ -39,7 +39,7 @@ private:
     
 public:
     int current_date = CURR_DATE;       // to be set or implemented
-
+    PatronRecord(Patron* patron);
     // Function to add a book to the patron's record
     void addBook(const BookItem& book);
     // Function to remove a book from the patron's record by ISBN
