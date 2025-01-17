@@ -18,11 +18,22 @@
 
 // Helper function
 std::time_t parseTime(const std::string& timetoparse);
+enum Action {borrow, return_from_borrow, reserve};
+
+struct ClassicRecord
+{
+    std::string date;                        // date the action was taken 
+    std::string patronName;                  // name of the patron
+    std::string bookName;                    // name of the book
+    Action myaction;
+};
+
 
 class PatronRecord {
 private:
     std::vector<BookItem> checkedOutBooks;
     Patron unique_patron;       // patron being referred to
+    std::vector<ClassicRecord> patronTransactions;
 
     
 public:
@@ -42,7 +53,10 @@ public:
     double calculateTotalLateFees();
 
     Patron getPatron() const;
+    std::vector<ClassicRecord> getPatronTransactions() const;
 
+    // HELPER FUNCTION
+    void displayClassicRecord(ClassicRecord) const;
     std::vector<BookItem> getCheckedOutBooks() const;
 };
 #endif // PATRON_RECORD_H

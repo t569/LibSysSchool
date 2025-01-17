@@ -11,6 +11,7 @@
 #define PATRON_H
 #include <string>
 
+
 class Patron {
 private:
     std::string name;
@@ -19,6 +20,8 @@ private:
 
     // notifications message
     std::string messages;
+
+
 public:
     //Constuctor
     Patron(const std::string& name, const std::string& libraryCardNumber, const std::string& contactInfo);

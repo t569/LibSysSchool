@@ -107,3 +107,25 @@ void Library::generateLibraryReport() const
 void reserveBook(const std::string& isbn, const std::string& patronCardNumber);      
 void viewTransactionHistory(const std::string& patronCardNumber) const; 
 */
+
+// Add proper dependencies
+void Library::viewTransactionHistory(const std::string& patronCardNumber) const 
+{
+    for(auto& record : patronRecords)
+    {
+        if(record.getPatron().getLibraryCardNumber() == patronCardNumber)
+            for(auto& history_entry: record.getPatronTransactions())
+            {
+                record.displayClassicRecord(history_entry); // display the record for a particular patron
+            }
+    }
+    // if nothing was found return null
+    return;
+}
+
+// Add proper dependencies
+void Library::reserveBook(const std::string& isbn, const std::string& patronCardNumber)
+{
+    // set isAvailable to false first
+    // then make it only accessible to said patron
+}

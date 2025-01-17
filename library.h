@@ -32,6 +32,8 @@ private:
     std::vector<Patron> patrons;               
     std::vector<PatronRecord> patronRecords;  
     std::vector<std::string> LibraryRecords;
+    std::vector<ClassicRecord> patronTransactions;      // the general records
+
 public:
     // Functions for managing books and patrons, borrowing and returning books
     //Function that  Adds a book to the library
