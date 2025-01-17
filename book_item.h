@@ -1,14 +1,3 @@
-
-=======
-//  4. BookItem Class (Derived Class)
-//  ● Createaderived class named BookItem that inherits from LibraryItem.
-//  ● Add properties specific to books:
-//     ○ author
-//     ○ isbn
-//  ● Override appropriate functions for books:
-//     ○ printDetails() – Display all details of the book, including availability status.
-//     ○ calculateLateFees(int daysOverdue)– Compute the fine for overdue books based on a per-day
-//     rate.
 #ifndef BOOK_ITEM_H
 #define BOOK_ITEM_H
 #include "library_item.h"
