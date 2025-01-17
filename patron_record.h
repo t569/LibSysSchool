@@ -34,6 +34,7 @@ private:
     std::vector<BookItem> checkedOutBooks;
     Patron unique_patron;       // patron being referred to
     std::vector<ClassicRecord> patronTransactions;
+    std::vector<BookItem> reservedBooks;        // reserved books for a particular patron
 
     
 public:
@@ -55,8 +56,11 @@ public:
     Patron getPatron() const;
     std::vector<ClassicRecord> getPatronTransactions() const;
 
+    std::vector<BookItem> getCheckedOutBooks() const;
+    std::vector<BookItem>& getReservedBooks();
     // HELPER FUNCTION
     void displayClassicRecord(ClassicRecord) const;
-    std::vector<BookItem> getCheckedOutBooks() const;
+    
+
 };
 #endif // PATRON_RECORD_H

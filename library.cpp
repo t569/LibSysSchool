@@ -108,7 +108,7 @@ void reserveBook(const std::string& isbn, const std::string& patronCardNumber);
 void viewTransactionHistory(const std::string& patronCardNumber) const; 
 */
 
-// Add proper dependencies
+
 void Library::viewTransactionHistory(const std::string& patronCardNumber) const 
 {
     for(auto& record : patronRecords)
@@ -123,9 +123,40 @@ void Library::viewTransactionHistory(const std::string& patronCardNumber) const
     return;
 }
 
-// Add proper dependencies
+// add a book to a patron's reserve record
 void Library::reserveBook(const std::string& isbn, const std::string& patronCardNumber)
 {
-    // set isAvailable to false first
+    // get patron first
+    Patron* refpatron;
+    for(auto patron: this->patrons)
+    {
+        if(patron.getLibraryCardNumber() == patronCardNumber)
+            refpatron = &patron;
+    }
+
+    // get the book second
+    BookItem* refbook;
+    for(auto book: this->books)
+    {
+        if(book.getIsbn() == isbn)
+            refbook = &book;
+    }
+
+    // check the reserved count and add it if the count is enough
+    if((*refbook).getReservedCount() > 0 && (*refbook).getAvailable())  // this is when its available and it can be reserved
+    {
+        // check patron records for particular patron 
+        for(auto record: this->patronRecords)
+        {
+            if(record.getPatron().getName() == (*refpatron).getName())
+            {
+                record.getReservedBooks().emplace_back((*refbook)); // add book to reserved books
+            }    
+        }
+
+        // decrement the count
+        (*refbook).setReservedCount();  // reduces the count by 1
+    }
+
     // then make it only accessible to said patron
 }

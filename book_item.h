@@ -10,6 +10,7 @@
 #ifndef BOOK_ITEM_H
 #define BOOK_ITEM_H
 #include "library_item.h"
+#define RESERVE_LIMIT 10    // redundant code lol
 #include <iostream>
 class BookItem : public LibraryItem {
 private:
@@ -17,6 +18,7 @@ private:
     std::string isbn;
     bool isAvailable = true;
     double chargePerDay = 12.00;
+    unsigned int reserved_count = RESERVE_LIMIT;
 public:
     // Constructor
     BookItem(const std::string& title, bool isCheckedOut,
@@ -29,6 +31,8 @@ public:
     void setIsbn(const std::string& newIsbn);
     bool getAvailable() const;
     void setAvailable(bool& new_status);
+    unsigned int getReservedCount() const;
+    void setReservedCount(int change=-1);      // reduces the reserve_count variable by 1everytime it is called
     double getLateCharge();
     void setLateCharge(double&);
 

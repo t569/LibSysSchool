@@ -13,7 +13,7 @@ std::string BookItem::getAuthor()const{
     }
 
 void BookItem::setAuthor(const std::string& newAuthor){
-        this->author=newAuthor;
+        this->author = newAuthor;
     }
 
 std::string BookItem::getIsbn()const{
@@ -56,3 +56,16 @@ double BookItem::calculateLateFees(int daysOverdue)
     {
         return this->getLateCharge() * daysOverdue;
     }
+
+unsigned int BookItem::getReservedCount() const
+{
+    return this->reserved_count;
+}
+
+void BookItem::setReservedCount(int change=-1){
+    if(change == -1)
+        this->reserved_count--;
+    else
+        if(change > 0 && this->reserved_count == 0)      // only set the count again of the change is greater than zero and we are at zero for reserved count
+            this->reserved_count = change;
+}
